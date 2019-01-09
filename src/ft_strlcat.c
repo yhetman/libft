@@ -14,22 +14,22 @@
 
 size_t	ft_strlcat(char *restrict dest, const char *restrict srce, size_t size)
 {
-	size_t	srce_len;
-	size_t	dest_len;
+	size_t	dest_length;
+	size_t	srce_length;
 	size_t	i;
 
 	i = 0;
-	dest_len = 0;
-	srce_len = ft_strlen(dest);
-	while (dest[dest_len] && dest_len < size)
-		dest_len++;
-	if (dest_len >= size)
+	srce_length = 0;
+	dest_length = ft_strlen(dest);
+	while (dest[srce_length] && srce_length < size)
+		srce_length++;
+	if (srce_length >= size)
 		return (size + ft_strlen(srce));
-	while (srce[i] && i < (size - srce_len - 1))
+	while (srce[i] && i < (size - dest_length - 1))
 	{
-		dest[dest_len + i] = ((char *)srce)[i];
+		dest[srce_length + i] = ((char *)srce)[i];
 		i++;
 	}
-	dest[dest_len + i] = '\0';
-	return (dest_len + ft_strlen(srce));
+	dest[srce_length + i] = '\0';
+	return (srce_length + ft_strlen(srce));
 }

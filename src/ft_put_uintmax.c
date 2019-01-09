@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_put_uintmax.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/24 15:27:30 by yhetman           #+#    #+#             */
-/*   Updated: 2018/10/24 17:44:17 by yhetman          ###   ########.fr       */
+/*   Created: 2018/12/27 14:04:04 by yhetman           #+#    #+#             */
+/*   Updated: 2018/12/29 21:02:29 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+void	ft_put_uintmax(uintmax_t n)
 {
-	ft_putchar_fd(c, 1);
+	if (n >= 10)
+	{
+		ft_put_uintmax(n / 10);
+		ft_putchar(n % 10 + '0');
+	}
+	if (n < 10)
+		ft_putchar(n + '0');
 }

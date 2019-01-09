@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 21:40:24 by yhetman           #+#    #+#             */
-/*   Updated: 2018/11/08 18:00:57 by yhetman          ###   ########.fr       */
+/*   Created: 2018/10/24 15:27:30 by yhetman           #+#    #+#             */
+/*   Updated: 2018/12/05 15:06:59 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft.h"
-
-int	get_next_line(const int fd, char **line);
-
-#endif
+int	ft_putchar(char c)
+{
+	ft_putchar_fd(c, 1);
+	return (1);
+}

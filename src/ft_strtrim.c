@@ -12,15 +12,7 @@
 
 #include "libft.h"
 
-static int	find_whitespaces(char ch)
-{
-	if (ch == ' ' || ch == '\n' || ch == '\t')
-		return (1);
-	else
-		return (0);
-}
-
-char		*ft_strtrim(char const *s)
+char	*ft_strtrim(char const *s)
 {
 	char	*str;
 	size_t	i;
@@ -30,9 +22,9 @@ char		*ft_strtrim(char const *s)
 	if (!(s))
 		return (NULL);
 	length = ft_strlen(s) - 1;
-	while (find_whitespaces(s[++i]))
+	while (ft_find_whitespaces(s[++i]))
 		;
-	while (length > i && find_whitespaces(s[length]))
+	while (length > i && ft_find_whitespaces(s[length]))
 		length--;
 	if (length < i)
 		return (str = ft_strdup(""));

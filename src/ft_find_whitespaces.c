@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_find_whitespaces.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/24 15:28:50 by yhetman           #+#    #+#             */
-/*   Updated: 2018/10/24 17:45:08 by yhetman          ###   ########.fr       */
+/*   Created: 2018/12/01 22:46:53 by yhetman           #+#    #+#             */
+/*   Updated: 2018/12/01 22:46:57 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(const char *str)
+int	ft_find_whitespaces(char ch)
 {
-	ft_putstr_fd(str, 1);
+	if (ch == ' ' || ch == '\n' || ch == '\t')
+		return (1);
+	else
+		return (0);
 }
