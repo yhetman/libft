@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rgb_to_int.c                                    :+:      :+:    :+:   */
+/*   ft_strclen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 18:55:27 by yhetman           #+#    #+#             */
-/*   Updated: 2019/04/07 17:07:04 by yhetman          ###   ########.fr       */
+/*   Created: 2019/01/29 14:52:39 by yhetman           #+#    #+#             */
+/*   Updated: 2019/01/29 14:53:46 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-int	ft_rgb_to_int(int r, int g, int b)
+int		ft_strclen(const char *s, char c)
 {
-	return (r << 16 | g << 8 | b);
+	int		i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
 }

@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rgb_to_int.c                                    :+:      :+:    :+:   */
+/*   ft_charinstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 18:55:27 by yhetman           #+#    #+#             */
-/*   Updated: 2019/04/07 17:07:04 by yhetman          ###   ########.fr       */
+/*   Created: 2019/01/29 12:51:20 by yhetman           #+#    #+#             */
+/*   Updated: 2019/01/29 13:00:26 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-int	ft_rgb_to_int(int r, int g, int b)
+int		ft_charinstr(char *str, char *search)
 {
-	return (r << 16 | g << 8 | b);
+	char	*temp;
+	size_t	length_search;
+	int		nb_occur;
+
+	temp = str;
+	length_search = 0;
+	nb_occur = 0;
+	length_search = ft_strlen(search);
+	while (str)
+	{
+		if ((str = ft_strstr(str, search)))
+		{
+			nb_occur++;
+			str = str + length_search;
+		}
+	}
+	return (nb_occur);
 }

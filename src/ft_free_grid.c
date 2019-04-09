@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rgb_to_int.c                                    :+:      :+:    :+:   */
+/*   ft_free_grid.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 18:55:27 by yhetman           #+#    #+#             */
-/*   Updated: 2019/04/07 17:07:04 by yhetman          ###   ########.fr       */
+/*   Created: 2019/01/27 19:14:41 by yhetman           #+#    #+#             */
+/*   Updated: 2019/03/08 14:22:03 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-int	ft_rgb_to_int(int r, int g, int b)
+void	ft_free_grid(char ***grid)
 {
-	return (r << 16 | g << 8 | b);
+	int	i;
+
+	i = 0;
+	while ((*grid)[i] != NULL)
+		free((*grid)[i++]);
+	free(*grid);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_backn_gnl.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 18:07:18 by yhetman           #+#    #+#             */
-/*   Updated: 2019/01/29 18:14:39 by yhetman          ###   ########.fr       */
+/*   Created: 2019/01/29 14:42:23 by yhetman           #+#    #+#             */
+/*   Updated: 2019/03/08 14:21:30 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 static void	mew_lst(t_fdl **mew, int fd)
 {
@@ -48,7 +48,7 @@ static void	multi_fd_gnl(t_fdl **mew, t_fdl **mew2, int fd)
 }
 
 static int	backslash_in_buffer(char *buffer, int length, t_fdl **mew,
-		char **line)
+			char **line)
 {
 	char	*temp;
 	size_t	n;
@@ -65,6 +65,7 @@ static int	backslash_in_buffer(char *buffer, int length, t_fdl **mew,
 		n = (size_t)ft_strclen(buffer, '\n');
 		buffer[n] = '\0';
 		*line = ft_strjoin((*mew)->reste, buffer);
+		*line = ft_strjoin(*line, "\n");
 		free((*mew)->reste);
 		(*mew)->reste = ft_strdup(&buffer[n + 1]);
 		free(buffer);
@@ -92,6 +93,7 @@ static int	backslash_in_rest(int fd, char **line, t_fdl **mew, char **buffer)
 		n = (size_t)ft_strclen((*mew)->reste, '\n');
 		(*mew)->reste[n] = '\0';
 		*line = ft_strdup((*mew)->reste);
+		*line = ft_strjoin(*line, "\n");
 		temp = (*mew)->reste;
 		(*mew)->reste = ft_strdup(&(*mew)->reste[n + 1]);
 		free(temp);
@@ -100,7 +102,7 @@ static int	backslash_in_rest(int fd, char **line, t_fdl **mew, char **buffer)
 	return (0);
 }
 
-int			get_next_line(const int fd, char **line)
+int			ft_backn_gnl(const int fd, char **line)
 {
 	t_gnl			gnl;
 
