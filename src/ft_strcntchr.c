@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_strcntchr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/01 22:20:14 by yhetman           #+#    #+#             */
-/*   Updated: 2019/09/01 19:08:54 by yhetman          ###   ########.fr       */
+/*   Created: 2019/06/14 19:59:51 by yhetman           #+#    #+#             */
+/*   Updated: 2019/09/16 16:35:47 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-char	*ft_strrev(const char *s)
+int		ft_strcntchr(const char *str, bool (*find)(char))
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
+	int	reg;
 
-	i = 0;
-	j = LEN(s) - 1;
-	str = (char *)malloc(sizeof(char) * j);
-	while (i < LEN(s) && str)
-		str[i++] = s[j--];
-	str[i] = '\0';
-	return (str);
+	reg = 0;
+	while (*str)
+	{
+		reg += find(*str);
+		str++;
+	}
+	return (reg);
 }

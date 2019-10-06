@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_strlen_of_word.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/01 22:20:14 by yhetman           #+#    #+#             */
-/*   Updated: 2019/09/01 19:08:54 by yhetman          ###   ########.fr       */
+/*   Created: 2019/06/06 16:19:27 by yhetman           #+#    #+#             */
+/*   Updated: 2019/06/06 16:26:17 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-char	*ft_strrev(const char *s)
+size_t	ft_strlen_of_word(const char *str)
 {
-	char	*str;
 	size_t	i;
-	size_t	j;
 
 	i = 0;
-	j = LEN(s) - 1;
-	str = (char *)malloc(sizeof(char) * j);
-	while (i < LEN(s) && str)
-		str[i++] = s[j--];
-	str[i] = '\0';
-	return (str);
+	while (str[i] && !IS_SPACE(str[i]))
+		i++;
+	return (i);
 }

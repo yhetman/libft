@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_isdash.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/01 22:20:14 by yhetman           #+#    #+#             */
-/*   Updated: 2019/09/01 19:08:54 by yhetman          ###   ########.fr       */
+/*   Created: 2019/06/14 19:54:52 by yhetman           #+#    #+#             */
+/*   Updated: 2019/09/16 16:22:17 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-char	*ft_strrev(const char *s)
+bool	ft_isdash(char check)
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = LEN(s) - 1;
-	str = (char *)malloc(sizeof(char) * j);
-	while (i < LEN(s) && str)
-		str[i++] = s[j--];
-	str[i] = '\0';
-	return (str);
+	if (check == '-')
+		return (true);
+	else
+		return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 14:03:05 by yhetman           #+#    #+#             */
-/*   Updated: 2018/12/29 21:03:03 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/09/01 19:08:54 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_put_uint_base(unsigned int numb, char *base)
 	char	*str;
 	int		i;
 
-	if (numb > 4294967295)
+	if (numb > 4294967294)
 		return (ft_putchar('0'));
 	str = ft_utoa_base(numb, base);
 	i = ft_putstr(str);
@@ -34,7 +34,7 @@ char	*ft_utoa_base(unsigned int numb, char *base)
 	if (numb == 0)
 		return (ft_strdup("0"));
 	i = 0;
-	base_size = ft_strlen(base);
+	base_size = LEN(base);
 	str = ft_strnew(ft_ulen_base(numb, base_size) + 1);
 	while (numb)
 	{

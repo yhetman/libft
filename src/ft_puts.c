@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 17:45:59 by yhetman           #+#    #+#             */
-/*   Updated: 2019/01/03 14:45:42 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 01:11:59 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_wstrput(t_shit *print)
 	{
 		wlength = (int)(ft_wstrlen((unsigned *)str));
 		(print->params & PRECIS) ? wlength = MIN(print->precis, wlength) : 0;
-		print->filled = MAX(print->min_length - wlength, 0);
+		print->filled = MAX((print->min_length - wlength), 0);
 		if (print->precis == 4 && print->min_length == 15 && wlength == 4)
 			++print->filled;
 		print->params = (print->min_length > print->precis) ?
@@ -40,7 +40,7 @@ void	ft_wstrput(t_shit *print)
 	}
 }
 
-void	ft_wcharput(t_shit *print, unsigned int wc, int wlength, int byte_size)
+void	ft_wcharput(t_shit *print, int wc, size_t wlength, size_t byte_size)
 {
 	char	tmp[4];
 
@@ -78,7 +78,7 @@ void	ft_strput(t_shit *print)
 		ft_printf_str((char *)str, print);
 	else
 	{
-		length = (int)(ft_strlen((char*)str));
+		length = (int)(LEN((char*)str));
 		(print->params & PRECIS) ? length = MIN(print->precis, length) : 0;
 		print->filled = (print->min_length - length) > 0
 		? (print->min_length - length) : 0;
@@ -99,7 +99,7 @@ void	ft_printf_str(char *str, t_shit *print)
 				ft_buffering(print, "0", 1);
 	}
 	else
-		ft_buffering(print, str, (int)ft_strlen(str));
+		ft_buffering(print, str, (int)LEN(str));
 }
 
 void	ft_char(t_shit *print, unsigned c)

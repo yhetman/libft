@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_str_count_char.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/01 22:20:14 by yhetman           #+#    #+#             */
+/*   Created: 2019/01/29 12:51:20 by yhetman           #+#    #+#             */
 /*   Updated: 2019/09/01 19:08:54 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-char	*ft_strrev(const char *s)
+int		ft_str_count_char(char *str, char *search)
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
+	size_t	length_search;
+	int		nb_occur;
 
-	i = 0;
-	j = LEN(s) - 1;
-	str = (char *)malloc(sizeof(char) * j);
-	while (i < LEN(s) && str)
-		str[i++] = s[j--];
-	str[i] = '\0';
-	return (str);
+	length_search = 0;
+	nb_occur = 0;
+	length_search = LEN(search);
+	while (str)
+	{
+		if ((str = ft_strstr(str, search)))
+		{
+			nb_occur++;
+			str = str + length_search;
+		}
+	}
+	return (nb_occur);
 }

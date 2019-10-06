@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_init_image.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/01 22:20:14 by yhetman           #+#    #+#             */
-/*   Updated: 2019/09/01 19:08:54 by yhetman          ###   ########.fr       */
+/*   Created: 2019/06/07 07:24:22 by yhetman           #+#    #+#             */
+/*   Updated: 2019/09/16 16:20:54 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-char	*ft_strrev(const char *s)
+void	ft_init_image(void *mlx, t_image *image)
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = LEN(s) - 1;
-	str = (char *)malloc(sizeof(char) * j);
-	while (i < LEN(s) && str)
-		str[i++] = s[j--];
-	str[i] = '\0';
-	return (str);
+	image->image = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
+	image->ptr = mlx_get_data_addr(image->image, &(image->bits),
+		&(image->size), &(image->end));
+	image->bits /= 8;
 }

@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
+/*   ft_is_integer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 03:48:08 by yhetman           #+#    #+#             */
-/*   Updated: 2019/05/25 22:55:04 by yhetman          ###   ########.fr       */
+/*   Created: 2019/06/06 16:16:59 by yhetman           #+#    #+#             */
+/*   Updated: 2019/09/16 16:21:29 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-size_t	ft_nbrlen(int n)
+int				ft_is_integer(const char *arg)
 {
-	size_t	i;
+	intmax_t	tmp;
+	size_t		len;
 
-	i = 0;
-	if (n < 0)
-	{
-		n = ABS(n);
-		++i;
-	}
-	while (n /= 10)
-		++i;
-	return (i);
+	len = ft_strlen_of_word(arg);
+	if (len > 11)
+		return (0);
+	tmp = ft_atoi(arg);
+	if ((intmax_t)INT_MAX < (intmax_t)tmp
+		|| (intmax_t)tmp < (intmax_t)INT_MIN)
+		return (0);
+	if (*arg == '+' || *arg == '-')
+		arg++;
+	if (!IS_DIGIT(*arg))
+		return (0);
+	while (*arg && !IS_SPACE(*arg))
+		if (!IS_DIGIT(*arg++))
+			return (0);
+	return (1);
 }
